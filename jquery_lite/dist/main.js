@@ -86,14 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/dom_node_collection.js":
+/*!************************************!*\
+  !*** ./src/dom_node_collection.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\nclass DOMNodeCollection {\n  constructor(htmlEls) {\n    this.htmlEls = htmlEls;\n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log('connected');\n\n// Create $1 function on global namespace\n\nwindow.$l = function(arg) {\n  console.log(arg);\n};\n\n\n\n\n\n// empty\n// remove\n// attr\n// addClass\n// removeClass\n// html\n// find\n// children\n// parent\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("let DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\n// Create $1 function on global namespace\n\nwindow.$l = function(sel) {\n  if(typeof sel === \"string\"){\n    let nodes = Array.from(document.querySelectorAll(sel));\n    return new DOMNodeCollection(nodes);\n  } else if (sel instanceof HTMLElement){\n    // if (nodes.length === 1) {\n    //   return new DOMNodeCollection(nodes[0]);\n    // } else {\n    //   return new DOMNodeCollection(sel);\n    // }\n    return new DOMNodeCollection([sel]);\n  }\n};\n\n\n\n// #1\n// DOMNodeCollection\n// $('.class')\n// $('#id')\n\n// #2\n// HTML Element\n// $('li')\n\n\n\n// empty\n// remove\n// attr\n// addClass\n// removeClass\n// html\n// find\n// children\n// parent\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
