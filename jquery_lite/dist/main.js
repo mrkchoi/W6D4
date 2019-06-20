@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nalert('connected!');\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log('connected');\n\n// Create $1 function on global namespace\n\nwindow.$l = function(arg) {\n  console.log(arg);\n};\n\n\n\n\n\n// empty\n// remove\n// attr\n// addClass\n// removeClass\n// html\n// find\n// children\n// parent\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
