@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nclass DOMNodeCollection {\n  constructor(htmlEls) {\n    this.htmlEls = htmlEls;\n  }\n}\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
+eval("\nclass DOMNodeCollection {\n  constructor(arr) {\n    this.arr = arr;\n  }\n\n  html(text) {\n    if (text === undefined) return this.arr[0].innerHTML;   \n    this.arr.forEach(el => el.innerHTML = text);\n  }\n\n  empty() {\n    this.html('');\n  }\n  \n  append(arg) {\n    this.arr.forEach(el => {\n      if (typeof arg === 'string') {\n        // String\n        el.innerHTML += arg;\n      } else if (arg instanceof HTMLElement) {\n        // HTMLElement\n        el.innerHTML += arg.outerHTML;\n      } else {\n        // Collection\n        for (let i = 0; i < arg.length; i++) {\n          // set outerHTML of arg[i] to innerHTML of el\n          el.innerHTML += arg[i].outerHTML;          \n        }   \n      }\n  });\n}\n  \n  attr() {\n    \n  }\n\n  addClass() {}\n  removeClass() {}\n}\n// this.arr.append('<p>test</p>');\n\n\nmodule.exports = DOMNodeCollection;\n\n//# sourceURL=webpack:///./src/dom_node_collection.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("\nclass DOMNodeCollection {\n  constructor(htmlEls) {\n    this.htmlEls = 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("let DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\n// Create $1 function on global namespace\n\nwindow.$l = function(sel) {\n  if(typeof sel === \"string\"){\n    let nodes = Array.from(document.querySelectorAll(sel));\n    return new DOMNodeCollection(nodes);\n  } else if (sel instanceof HTMLElement){\n    // if (nodes.length === 1) {\n    //   return new DOMNodeCollection(nodes[0]);\n    // } else {\n    //   return new DOMNodeCollection(sel);\n    // }\n    return new DOMNodeCollection([sel]);\n  }\n};\n\n\n\n// #1\n// DOMNodeCollection\n// $('.class')\n// $('#id')\n\n// #2\n// HTML Element\n// $('li')\n\n\n\n// empty\n// remove\n// attr\n// addClass\n// removeClass\n// html\n// find\n// children\n// parent\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("let DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection.js */ \"./src/dom_node_collection.js\");\n\n// Create $1 function on global namespace\n\nwindow.$l = function(sel) {\n  if(typeof sel === \"string\"){\n    let nodes = Array.from(document.querySelectorAll(sel));\n    return new DOMNodeCollection(nodes);\n  } else if (sel instanceof HTMLElement){\n    return new DOMNodeCollection([sel]);\n  }\n};\n\n\n\n\n// #1\n// DOMNodeCollection\n// $('.class')\n// $('#id')\n\n// #2\n// HTML Element\n// $('li')\n\n\n\n// empty\n// remove\n// attr\n// addClass\n// removeClass\n// html\n// find\n// children\n// parent\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

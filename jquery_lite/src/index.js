@@ -7,14 +7,10 @@ window.$l = function(sel) {
     let nodes = Array.from(document.querySelectorAll(sel));
     return new DOMNodeCollection(nodes);
   } else if (sel instanceof HTMLElement){
-    // if (nodes.length === 1) {
-    //   return new DOMNodeCollection(nodes[0]);
-    // } else {
-    //   return new DOMNodeCollection(sel);
-    // }
     return new DOMNodeCollection([sel]);
   }
 };
+
 
 
 
