@@ -32,8 +32,17 @@ class DOMNodeCollection {
 }
   
   attr() {
-    
+    let args = arguments;
+    if(args.length === 1){
+      let el = this.arr[0];
+      return el.attributes[args[0]].value;
+    }else{
+      this.arr.forEach(el => el.attributes[args[0]].value = args[1]);
+
+    }
   }
+
+  
 
   addClass() {}
   removeClass() {}
